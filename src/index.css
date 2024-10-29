@@ -10,5 +10,11 @@
   body {
     @apply min-h-dvh bg-white;
   }
+}
 
+@layer components {
+  .btn-df {
+    @apply bg-black text-xl text-white py-1 px-2 w-24 text-center transition-all
+    hover:drop-shadow-xl hover:cursor-pointer;
+  }
 }
