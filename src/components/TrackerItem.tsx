@@ -39,7 +39,7 @@ function TrackerItem({
   };
 
   return (
-    <div className="w-[30rem] px-4 py-6 bg-white">
+    <div className="w-[36rem] px-4 py-6 bg-white">
       {isEditTracker ? (
         <EditTrackerForm
           id={item.id}
@@ -49,8 +49,8 @@ function TrackerItem({
           onSubmitEditMessage={handleSubmitEditMessage}
         />
       ) : (
-        <div className="flex justify-between items-center gap-x-1 ">
-          <p>{item.message}</p>
+        <div className="flex justify-between items-center gap-x-2 ">
+          <p className="truncate">{item.message}</p>
           <div className="flex gap-x-2">
             <button
               type="button"

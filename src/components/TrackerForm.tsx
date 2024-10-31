@@ -14,7 +14,7 @@ function TrackerForm({
   return (
     <form
       onSubmit={onSubmitAddMessage}
-      className=" flex justify-center items-center gap-x-1 w-[30rem] px-4 py-6 bg-white"
+      className=" flex justify-center items-center gap-x-2 w-[36rem] px-4 py-6 bg-white"
     >
       <input
         type="text"
