@@ -16,7 +16,7 @@ function App() {
     setInputTracker(e.target.value);
   };
 
-  const onSubmitAddMessage = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitAddMessage = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const newTrackerData: ArrDataType = {
@@ -24,9 +24,10 @@ function App() {
       message: inputTracker,
     };
     setArrData([newTrackerData, ...arrData]);
+    setInputTracker('')
   };
 
-  const onUpdate = (id: string, newMessage: string) => {
+  const handleUpdate = (id: string, newMessage: string) => {
     setArrData((prev) =>
       prev.map((item) =>
         item.id === id ? { ...item, message: newMessage } : item
@@ -34,7 +35,7 @@ function App() {
     );
   };
 
-  const onRemove = (id: string) => {
+  const handleRemove = (id: string) => {
     const filterData = arrData.filter((item) => item.id !== id);
     setArrData(filterData);
   };
@@ -44,11 +45,16 @@ function App() {
       <TrackerForm
         inputTracker={inputTracker}
         handleInputTracker={handleInputTracker}
-        onSubmitAddMessage={onSubmitAddMessage}
+        onSubmitAddMessage={handleSubmitAddMessage}
       />
       {isArrValue &&
         arrData.map((item) => (
-          <TrackerItem key={item.id} item={item} onUpdate={onUpdate} onRemove={onRemove} />
+          <TrackerItem
+            key={item.id}
+            item={item}
+            handleUpdate={handleUpdate}
+            handleRemove={handleRemove}
+          />
         ))}
     </div>
   );

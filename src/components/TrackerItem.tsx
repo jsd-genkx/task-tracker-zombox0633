@@ -4,11 +4,15 @@ import EditTrackerForm from "./EditTrackerForm";
 
 type TrackerItemPropsType = {
   item: ArrDataType;
-  onUpdate: (id: string, newMessage: string) => void;
-  onRemove: (id: string) => void;
+  handleUpdate: (id: string, newMessage: string) => void;
+  handleRemove: (id: string) => void;
 };
 
-function TrackerItem({ item, onUpdate, onRemove }: TrackerItemPropsType) {
+function TrackerItem({
+  item,
+  handleUpdate: onUpdate,
+  handleRemove: onRemove,
+}: TrackerItemPropsType) {
   const [isEditTracker, setIsEditTracker] = useState<boolean>(false);
   const [editMessage, setEditMessage] = useState<string>(item.message);
 
@@ -16,11 +20,11 @@ function TrackerItem({ item, onUpdate, onRemove }: TrackerItemPropsType) {
     setEditMessage(e.target.value);
   };
 
-  const onEditMessage = () => {
+  const handleEditMessage = () => {
     setIsEditTracker((prev) => !prev);
   };
 
-  const onSubmitEditMessage = (
+  const handleSubmitEditMessage = (
     id: string,
     event: React.FormEvent<HTMLFormElement>
   ) => {
@@ -42,13 +46,17 @@ function TrackerItem({ item, onUpdate, onRemove }: TrackerItemPropsType) {
           editMessage={editMessage}
           handleEditInput={handleEditInput}
           onCancelEditMessage={onCancelEditMessage}
-          onSubmitEditMessage={onSubmitEditMessage}
+          onSubmitEditMessage={handleSubmitEditMessage}
         />
       ) : (
         <div className="flex justify-between items-center gap-x-1 ">
           <p>{item.message}</p>
           <div className="flex gap-x-2">
-            <button type="button" onClick={onEditMessage} className="btn-df">
+            <button
+              type="button"
+              onClick={handleEditMessage}
+              className="btn-df"
+            >
               edit
             </button>
             <button
