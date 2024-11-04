@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
-import { ArrDataType } from "../App";
 import EditTrackerForm from "./EditTrackerForm";
+import { ArrDataType } from "../hook/useTacker";
 
 type TrackerItemPropsType = {
   item: ArrDataType;
